@@ -1,0 +1,165 @@
+@charset 'utf-8';
+@font-face {
+  font-family: "S-CoreDream-3Light";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  font-family: "S-CoreDream-3Light";
+  font-size: 10px;
+  --point-c1: #f75e16;
+  --point-c2: #ffab40;
+  --gray1: #000;
+  --gray2: #272727;
+  --gray3: #9a9a9a;
+  --gray4: #efefef;
+  --white: #fff;
+  color: var(--gray2);
+  --max-w: 1600px;
+}
+body {
+  font-size: 1.6rem;
+}
+
+.mw {
+  max-width: var(--max-w);
+  width: calc(100%-2rem);
+  margin: auto;
+}
+
+.hd {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 1rem 1rem;
+}
+.hd h1 {
+  max-width: 150px;
+  min-width: 100px;
+  cursor: pointer;
+}
+.hd h1 path {
+  transition: 0.35s;
+}
+.hd h1 path {
+  fill: var(--gray2);
+}
+.hd h1:hover .st0 {
+  fill: var(--point-c1);
+}
+.hd h1:hover .st1 {
+  fill: var(--point-c2);
+}
+.hd .gnb {
+  display: flex;
+  width: 70%;
+  max-width: 1280px;
+  align-items: center;
+  font-weight: bolder;
+  font-size: 2.5rem;
+  justify-content: space-around;
+}
+.hd .gnb a {
+  padding: 1.5rem;
+  transition: 0.35s;
+}
+.hd .gnb a:hover {
+  color: var(--point-c1);
+}
+
+main {
+  margin: 50px 0;
+  background-image: url(/public/img/jeju.png);
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+  height: 80vh;
+  position: relative;
+}
+.arrow {
+  position: absolute;
+  cursor: pointer;
+  padding: 2rem;
+  /* transition: 0.35s; */
+}
+.arrow svg {
+  max-width: 50px;
+  width: 40%;
+  min-width: 30px;
+}
+.arrow path {
+  fill: #f75e16;
+}
+.ar1 {
+  left: 35%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+}
+.ar1:hover {
+  animation-duration: 0.8s;
+  animation-name: upDown;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.ar2 {
+  left: 65%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+}
+.ar2:hover {
+  animation-duration: 0.8s;
+  animation-name: upDown;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.ar3 {
+  left: 40%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+}
+.ar3:hover {
+  animation-duration: 0.8s;
+  animation-name: upDown;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.ar4 {
+  left: 70%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.ar4:hover {
+  animation-duration: 0.8s;
+  animation-name: upDown;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.ar5 {
+  left: 50%;
+  top: calc(50% - 60px);
+  transform: translate(-50%, -50%);
+}
+.ar5:hover {
+  animation-duration: 0.8s;
+  animation-name: upDown;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes upDown {
+  0% {
+    transform: translate(-50%, -70%);
+  }
+
+  100% {
+    transform: translate(-50%, -30%);
+  }
+}
