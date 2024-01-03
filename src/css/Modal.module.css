@@ -69,7 +69,6 @@
 }
 .textArea {
   position: absolute;
-  border: 1px solid #000;
   width: 90%;
   height: 50%;
   left: 50%;
@@ -78,13 +77,14 @@
   text-align: center;
   color: var(--point-c1);
   font-weight: bold;
+  font-size: 1.3rem;
+  line-height: 1.1;
 }
 .textArea h2 {
   font-size: 2rem;
   padding: 1rem 0;
 }
 .textArea ul {
-  border: 1px solid #000;
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -115,7 +115,7 @@
 }
 .wrapper {
   position: absolute;
-  border: 1px solid #000;
+
   width: 90%;
   height: 30%;
   left: 50%;

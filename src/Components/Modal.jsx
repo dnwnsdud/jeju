@@ -1,8 +1,9 @@
 import cssStyle from "../css/Modal.module.css";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { useSelector } from "react-redux";
+import SwiperCore from "swiper";
 
 const cancel = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -11,14 +12,16 @@ const cancel = (
 );
 
 export default function Modal({ closeModal, matchedItems }) {
-  let apiList = useSelector((a) => a.apiData);
-  console.log(apiList);
-  let linkList = useSelector((a) => a.linkData);
   const [selectedItem, setSelectedItem] = useState(matchedItems[0]); // matchedItems[0] 첫번째 배열값을 초기값으로 설정
-
+  SwiperCore.use([Autoplay]);
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
+  const num = "r" + selectedItem.rnum;
+  const linkList = useSelector((a) => a.linkData);
+  const lList = linkList.find((a) => a.linkId === num);
+  const url = lList.url;
+  const imgList = lList.img;
 
   return (
     <div className={cssStyle.modal}>
@@ -63,14 +66,7 @@ export default function Modal({ closeModal, matchedItems }) {
                 ))}
               <li>필요시설 :{selectedItem.subDescription}</li>
               <li className={cssStyle.btn}>
-                <button
-                  onClick={() =>
-                    window.open(
-                      "https://www.durunubi.kr/4-2-1-1-walk-mobility-view-detail.do?crs_idx=T_CRS_MNG0000001285#map",
-                      "_blank"
-                    )
-                  }
-                >
+                <button onClick={() => window.open(`${url}`, "_blank")}>
                   지도정보 보러가기
                 </button>
               </li>
@@ -81,15 +77,23 @@ export default function Modal({ closeModal, matchedItems }) {
           </div>
           <div className={cssStyle.wrapper}>
             <Swiper
+              spaceBetween={15}
+              loop={true}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+              }}
               navigation={true}
-              modules={[Navigation]}
+              modules={[Navigation, Autoplay]}
               className="mySwiper"
             >
-              <SwiperSlide>Slide 1</SwiperSlide>
-              <SwiperSlide>Slide 2</SwiperSlide>
-              <SwiperSlide>Slide 3</SwiperSlide>
-              <SwiperSlide>Slide 4</SwiperSlide>
-              <SwiperSlide>Slide 5</SwiperSlide>
+              {imgList.map((img) => {
+                return (
+                  <SwiperSlide>
+                    <img src={img} alt="배경사진" />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </div>
         </article>
