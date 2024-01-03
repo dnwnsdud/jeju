@@ -1,6 +1,6 @@
 import Footer from '../sections/Footer';
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import Modal from '../Components/Modal';
 
 import { useSelector } from 'react-redux';
@@ -88,40 +88,47 @@ let logo = (
   </svg>
 );
 
-
-
-
-
-
 function App() {
-  let apiList = useSelector((a) => a.apiData)
-  let linkList = useSelector((a) => a.linkData)
-  let linkItem1 = linkList.filter((a) => a.cate == 1)
-  let linkItem2 = linkList.filter((a) => a.cate == 2)
-  let linkItem3 = linkList.filter((a) => a.cate == 3)
-  let linkItem4 = linkList.filter((a) => a.cate == 4)
-  let linkItem5 = linkList.filter((a) => a.cate == 5)
-  // console.log(linkItem1[0].linkId);
-  console.log('api-- ',apiList);
-  console.log('link',linkList);
-  
+  let apiList = useSelector((a) => a.apiData);
+  let linkList = useSelector((a) => a.linkData);
+  let linkItem1 = linkList.filter((a) => a.cate === '1');
+  let linkItem2 = linkList.filter((a) => a.cate === '2');
+  let linkItem3 = linkList.filter((a) => a.cate === '3');
+  let linkItem4 = linkList.filter((a) => a.cate === '4');
+  let linkItem5 = linkList.filter((a) => a.cate === '5');
 
   let [isActive, setIsActive] = useState(false);
-  let openModal = () => {
-    setIsActive(true)
-  }
+  const [matchedItems, setMatchedItems] = useState([]);
+
+  //apiList.rnum 은 1부터 63번까지 string으로 출력됩니다.
+  //linkList.linkId 는 r1부터 r63번까지  string으로 출력됩니다.
+  //버튼을 클릭하면 apiList 데이터를 기준으로
+  //apiList.rnum 과 linkList.linkId의 데이터 중 'r'뒤의 문자를 비교해서 같은 값이 있으면 새로운 배열로 만든다.
+  const handleClick = (item) => {
+    let newMatchedItems = apiList.filter((apiItem) => {
+      return item.some((linkItem) => {
+        let linkIdNumber = linkItem.linkId.replace('r', '');
+        return apiItem.rnum === linkIdNumber;
+      });
+    });
+
+    setMatchedItems(newMatchedItems); //새로운 배열을 matchedItems에 넣는다.
+    setIsActive(true); //모달창을 활성화한다.
+  };
+
   let closeModal = () => {
-    setIsActive(false)
-  }
+    setIsActive(false);
+  };
+
   return (
-    <div className='mw'>
+    <div className="mw">
       <header className="hd">
         <h1>{logo}</h1>
         <nav className="gnb">
           <Link
             onClick={(e) => {
               e.preventDefault();
-              openModal()
+              handleClick(linkItem1);
             }}
           >
             북서부
@@ -129,7 +136,7 @@ function App() {
           <Link
             onClick={(e) => {
               e.preventDefault();
-              openModal()
+              handleClick(linkItem2);
             }}
           >
             북동부
@@ -137,7 +144,7 @@ function App() {
           <Link
             onClick={(e) => {
               e.preventDefault();
-              openModal()
+              handleClick(linkItem3);
             }}
           >
             남서부
@@ -145,7 +152,7 @@ function App() {
           <Link
             onClick={(e) => {
               e.preventDefault();
-              openModal()
+              handleClick(linkItem4);
             }}
           >
             남동부
@@ -153,7 +160,7 @@ function App() {
           <Link
             onClick={(e) => {
               e.preventDefault();
-              openModal()
+              handleClick(linkItem5);
             }}
           >
             중부
@@ -161,26 +168,36 @@ function App() {
         </nav>
       </header>
       <main>
-        <div className="arrow ar1" onClick={() => { openModal() }}>
+        <div className="arrow ar1" onClick={() => {
+          handleClick(linkItem1);
+        }}>
           {arrow}
         </div>
-        <div className="arrow ar2" onClick={() => { openModal() }}>
+        <div className="arrow ar2" onClick={() => {
+          handleClick(linkItem2);
+        }}>
           {arrow}
         </div>
-        <div className="arrow ar3" onClick={() => { openModal() }}>
+        <div className="arrow ar3" onClick={() => {
+          handleClick(linkItem3);
+        }}>
           {arrow}
         </div>
-        <div className="arrow ar4" onClick={() => { openModal() }}>
+        <div className="arrow ar4" onClick={() => {
+          handleClick(linkItem4);
+        }}>
           {arrow}
         </div>
-        <div className="arrow ar5" onClick={() => { openModal() }}>
+        <div className="arrow ar5" onClick={() => {
+          handleClick(linkItem5);
+        }}>
           {arrow}
         </div>
       </main>
       {isActive && (
-        <Modal closeModal={closeModal} />
+        <Modal matchedItems={matchedItems} closeModal={closeModal} />
       )}
-      <Footer />
+      <Footer className="footer" />
     </div>
   );
 }

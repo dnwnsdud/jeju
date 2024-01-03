@@ -36,3 +36,89 @@
 .cancel:hover path {
   fill: var(--point-c2);
 }
+
+.listmodal,
+.cardmodal {
+  background-color: white;
+  padding: 2rem;
+}
+.listmodal {
+  width: 30%;
+}
+.listmodal > p {
+  cursor: pointer;
+  border: 1px solid var(--point-c2);
+  padding: 1rem 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--gray3);
+  border-radius: 1rem;
+  transition: 0.35s;
+}
+.listmodal > p:hover,
+.listmodal > p.on {
+  border-color: var(--gray3);
+  background-color: var(--point-c1);
+  color: var(--gray1);
+}
+.cardmodal {
+  padding-top: 50%;
+  width: 60%;
+  position: relative;
+}
+.textArea {
+  position: absolute;
+  border: 1px solid #000;
+  width: 90%;
+  height: 50%;
+  left: 50%;
+  top: 27%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--point-c1);
+  font-weight: bold;
+}
+.textArea h2 {
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+.textArea ul {
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.textArea ul li {
+  text-align: left;
+  padding: 1rem 0.5rem;
+}
+.textArea ul .btn {
+  padding: 0;
+}
+.btn button {
+  margin: 0.5rem 0;
+  background-color: transparent;
+  outline: none;
+  border: 2px solid var(--point-c1);
+  color: var(--point-c1);
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  transition: 0.35s;
+}
+.btn button:hover {
+  color: #fff;
+  background-color: var(--point-c1);
+}
+.wrapper {
+  position: absolute;
+  border: 1px solid #000;
+  width: 90%;
+  height: 30%;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -50%);
+}

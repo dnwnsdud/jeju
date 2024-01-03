@@ -1,9 +1,11 @@
-import cssStyle from '../css/ListModal.module.css'
+import cssStyle from '../css/ListModal.module.css';
 
-export default function ListModal() {
+export default function ListModal({ matchedItems }) {
   return (
     <div className={cssStyle.listmodal}>
-        지역 리스트
+      {matchedItems.map((item) => () => {
+        return <div>{item}</div>;
+      })}
     </div>
   );
 }

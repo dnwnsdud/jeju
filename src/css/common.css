@@ -32,8 +32,12 @@ body {
 .hd {
   display: flex;
   justify-content: space-between;
-
   padding: 1rem 1rem;
+  border-bottom: 2px solid var(--gray3);
+  transition: 0.35s;
+}
+.hd:hover {
+  border-color: var(--point-c1);
 }
 .hd h1 {
   max-width: 150px;
@@ -76,7 +80,8 @@ main {
   width: 100%;
   background-size: contain;
   background-position: center;
-  height: 80vh;
+  /* height: 80vh; */
+  padding-top: 45%;
   position: relative;
 }
 .arrow {
@@ -162,4 +167,9 @@ main {
   100% {
     transform: translate(-50%, -30%);
   }
+}
+
+.mySwiper {
+  height: 100%;
+  width: 100%;
 }

@@ -6,6 +6,8 @@ import { store } from './store/store';
 import { BrowserRouter } from 'react-router-dom';
 import App from './pages/App';
 import './css/reset.css'
+import "swiper/css";
+import 'swiper/css/navigation';
 import './css/common.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
