@@ -170,7 +170,9 @@ function App() {
         </nav>
 
       </header>
-      <main>
+      <main style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/img/jeju.png)`
+      }}>
         <div className="arrow ar1" onClick={() => {
           handleClick(linkItem1);
         }}>

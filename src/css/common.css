@@ -23,7 +23,6 @@ body {
   font-size: 1.6rem;
 }
 
-
 .mw {
   max-width: var(--max-w);
   width: calc(100%-2rem);
@@ -83,14 +82,12 @@ body {
 
 main {
   margin: 50px 0;
-  background-image: url(/jeju/img/jeju.png);
   background-repeat: no-repeat;
   width: 100%;
   background-size: contain;
   background-position: center;
   padding-top: 45%;
   position: relative;
-  
 }
 .arrow {
   position: absolute;
