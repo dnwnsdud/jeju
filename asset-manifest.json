@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/jeju/static/css/main.bb8740cb.css",
+    "main.js": "/jeju/static/js/main.8c5b098e.js",
+    "static/js/787.67b41070.chunk.js": "/jeju/static/js/787.67b41070.chunk.js",
+    "static/media/jeju.png": "/jeju/static/media/jeju.ec82f9247c840637bfe7.png",
+    "static/media/whale.gif": "/jeju/static/media/whale.eb0337248073b702df2f.gif",
+    "index.html": "/jeju/index.html",
+    "main.bb8740cb.css.map": "/jeju/static/css/main.bb8740cb.css.map",
+    "main.8c5b098e.js.map": "/jeju/static/js/main.8c5b098e.js.map",
+    "787.67b41070.chunk.js.map": "/jeju/static/js/787.67b41070.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bb8740cb.css",
+    "static/js/main.8c5b098e.js"
+  ]
+}
