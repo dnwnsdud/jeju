@@ -1,5 +1,5 @@
 import Footer from '../sections/Footer';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Modal from '../Components/Modal';
 
@@ -100,6 +100,7 @@ function App() {
   let [isActive, setIsActive] = useState(false);
   const [matchedItems, setMatchedItems] = useState([]);
 
+
   //apiList.rnum 은 1부터 63번까지 string으로 출력됩니다.
   //linkList.linkId 는 r1부터 r63번까지  string으로 출력됩니다.
   //버튼을 클릭하면 apiList 데이터를 기준으로
@@ -116,12 +117,13 @@ function App() {
     setIsActive(true); //모달창을 활성화한다.
   };
 
-  let closeModal = () => {
+  const closeModal = () => {
     setIsActive(false);
   };
 
   return (
     <div className="mw">
+
       <header className="hd">
         <h1>{logo}</h1>
         <nav className="gnb">
@@ -166,6 +168,7 @@ function App() {
             중부
           </Link>
         </nav>
+
       </header>
       <main>
         <div className="arrow ar1" onClick={() => {
@@ -193,7 +196,11 @@ function App() {
         }}>
           {arrow}
         </div>
+
+
+
       </main>
+
       {isActive && (
         <Modal matchedItems={matchedItems} closeModal={closeModal} />
       )}

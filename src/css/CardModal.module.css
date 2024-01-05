@@ -1,4 +1,89 @@
-.cardmodal{
-    flex: 1;
-    background-color: white;
+.cardmodal {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  z-index: 9999;
+  padding: 1.5rem;
+  background-color: white;
+}
+.textArea {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--point-c1);
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1.1;
+  border: 1px dotted var(--point-c1);
+}
+.textArea h2 {
+  font-size: 2rem;
+  padding: 0.5rem 0;
+}
+.textArea ul {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.textArea ul li {
+  text-align: left;
+  padding: 0.5rem 0.5rem;
+}
+.desc {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.textArea ul .btn {
+  padding: 0;
+}
+.btn button {
+  margin: 1.5rem 0;
+  background-color: transparent;
+  outline: none;
+  border: 2px solid var(--point-c1);
+  color: var(--point-c1);
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  transition: 0.35s;
+}
+.btn button:hover {
+  color: #fff;
+  background-color: var(--point-c1);
+}
+.wrapper {
+  width: 80%;
+  height: 40%;
+  margin: 0 auto;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
+
+.cancel {
+  cursor: pointer;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid var(--point-c2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cancel path {
+  fill: var(--point-c1);
+}
+.cancel:hover {
+  border-color: var(--point-c1);
+}
+.cancel:hover path {
+  fill: var(--point-c2);
 }

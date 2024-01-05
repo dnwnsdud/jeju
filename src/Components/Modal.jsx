@@ -1,9 +1,7 @@
 import cssStyle from "../css/Modal.module.css";
 import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import { useSelector } from "react-redux";
-import SwiperCore from "swiper";
+
+import CardModal from "./CardModal";
 
 const cancel = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -13,15 +11,15 @@ const cancel = (
 
 export default function Modal({ closeModal, matchedItems }) {
   const [selectedItem, setSelectedItem] = useState(matchedItems[0]); // matchedItems[0] 첫번째 배열값을 초기값으로 설정
-  SwiperCore.use([Autoplay]);
   const handleItemClick = (item) => {
     setSelectedItem(item);
+    setIsopen(true);
   };
-  const num = "r" + selectedItem.rnum;
-  const linkList = useSelector((a) => a.linkData);
-  const lList = linkList.find((a) => a.linkId === num);
-  const url = lList.url;
-  const imgList = lList.img;
+  const [Modal, setModal] = useState(true);
+  const [isOpen, setIsopen] = useState(false);
+  const close = () => {
+    setIsopen(false);
+  };
 
   return (
     <div className={cssStyle.modal}>
@@ -29,74 +27,18 @@ export default function Modal({ closeModal, matchedItems }) {
         {matchedItems.map((item, i) => (
           <p
             key={item.rnum}
-            onClick={() => handleItemClick(item)}
-            className={item === selectedItem ? cssStyle.on : ""}
+            onClick={() => {
+              handleItemClick(item);
+              setModal(false);
+            }}
           >
             {item.title}
           </p>
         ))}
       </div>
 
-      {selectedItem && (
-        <article className={cssStyle.cardmodal}>
-          <div className={cssStyle.textArea}>
-            <h2>{selectedItem.title}</h2>
-            <ul>
-              <li>거리 : {selectedItem.extent} Km</li>
-              <li>코스 경로 : {selectedItem.medium}</li>
-              <li>소요시간 : {selectedItem.time}</li>
-              <li>코스소개 :{selectedItem.description}</li>
-              {selectedItem.state &&
-                (selectedItem.state == "어려움" ||
-                selectedItem.state == "매우어려움" ? (
-                  <li>
-                    난이도 :
-                    <span style={{ color: "red" }}>{selectedItem.state}</span>
-                  </li>
-                ) : selectedItem.state == "쉬움" ||
-                  selectedItem.state == "매우쉬움" ? (
-                  <li>
-                    난이도 :
-                    <span style={{ color: "var(--gray3)" }}>
-                      {selectedItem.state}
-                    </span>
-                  </li>
-                ) : (
-                  <li>난이도 :{selectedItem.state}</li>
-                ))}
-              <li>필요시설 :{selectedItem.subDescription}</li>
-              <li className={cssStyle.btn}>
-                <button onClick={() => window.open(`${url}`, "_blank")}>
-                  지도정보 보러가기
-                </button>
-              </li>
-              {["7", "25", "26", "35"].includes(selectedItem.rnum) && (
-                <li>해당지역은 자전거를 이용할 수 없어요</li>
-              )}
-            </ul>
-          </div>
-          <div className={cssStyle.wrapper}>
-            <Swiper
-              spaceBetween={15}
-              loop={true}
-              autoplay={{
-                delay: 2000,
-                disableOnInteraction: false,
-              }}
-              navigation={true}
-              modules={[Navigation, Autoplay]}
-              className="mySwiper"
-            >
-              {imgList.map((img) => {
-                return (
-                  <SwiperSlide>
-                    <img src={img} alt="배경사진" />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
-        </article>
+      {isOpen && selectedItem && (
+        <CardModal selectedItem={selectedItem} close={close} />
       )}
 
       <button
@@ -105,6 +47,7 @@ export default function Modal({ closeModal, matchedItems }) {
           closeModal();
         }}
       >
+        
         {cancel}
       </button>
     </div>
