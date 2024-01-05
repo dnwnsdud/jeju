@@ -83,7 +83,7 @@ export default function CardModal({ selectedItem, close }) {
           {imgList.map((img) => {
             return (
               <SwiperSlide>
-                <img src={img} alt="배경사진" />
+                <img src={'/jeju'+img} alt="배경사진" />
               </SwiperSlide>
             );
           })}

@@ -23,16 +23,6 @@ body {
   font-size: 1.6rem;
 }
 
-.animal {
-  background-image: url(/public/img/whale.gif);
-  background-size: cover;
-  background-position: center;
-  width: 15%;
-  height: 100px;
-  position: absolute;
-  right: 5%;
-  top: 70%;
-}
 
 .mw {
   max-width: var(--max-w);
@@ -93,14 +83,14 @@ body {
 
 main {
   margin: 50px 0;
-  background-image: url(/public/img/jeju.png);
+  background-image: url(/jeju/img/jeju.png);
   background-repeat: no-repeat;
   width: 100%;
   background-size: contain;
   background-position: center;
   padding-top: 45%;
   position: relative;
-  /* overflow: hidden; */
+  
 }
 .arrow {
   position: absolute;
